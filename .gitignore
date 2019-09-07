@@ -11,6 +11,9 @@
 # production
 /build
 
+# secrets
+stork-20b75-firebase-adminsdk-ml5n9-9eac6fb09d.json
+
 # misc
 .DS_Store
 .env.local
