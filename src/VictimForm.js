@@ -93,14 +93,19 @@ class VictimForm extends Component {
 
     return (
       <div className="App" style={{width:"100%"}}>
+        <br/>
 
-      <form onSubmit={this.onFormSubmit.bind(this)}>
-      <input type="text" value={this.state.itemVal} onKeyDown={this.keyPress} onChange={this.handleChange}/>
-      <ul>
-      {this.renderEnteredItems()}
-      </ul>
-      <input type="submit" value="Submit!"/>
-      </form>
+          <form onSubmit={this.onFormSubmit.bind(this)}>
+            <h3 style={{color:"white"}}>What items do you need?</h3>
+
+            <input type="text" value={this.state.itemVal} onKeyDown={this.keyPress} onChange={this.handleChange}/>
+            <ul>
+            {this.renderEnteredItems()}
+            </ul>
+            <br/>
+            <input type="submit" value="Request" class="submit-button"/>
+          </form>
+          <br/>
       </div>
     );
 
