@@ -1,5 +1,8 @@
 import React from 'react';
 import './App.css';
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
 
 import VictimForm from './VictimForm.js'
 import Map from "./Map";
@@ -10,13 +13,19 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* <MapContainer/> */}
-        <Map
-          center={{ lat: 39.961, lng: -75.176 }}
-          zoom={10}
-          places={places}
-        />
-        <VictimForm/>
+        <br/><br/>
+        <Container>
+          <Row>
+            <Col><VictimForm/></Col>
+            <Col>
+              <Map
+              center={{ lat: 39.961, lng: -75.176 }}
+              zoom={10}
+              places={places}
+              />
+            </Col>
+          </Row>
+        </Container>
       </header>
     </div>
   );

@@ -13,9 +13,9 @@ const MapWithPlaces = compose(
   withProps({
     googleMapURL:
       "https://maps.googleapis.com/maps/api/js?key=AIzaSyDtGY1sjF7EfFjzxo9InYggxfMZgRHuJjk&libraries=geometry,drawing,places",
-    loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: "100vh", width: "100%" }} />,
-    mapElement: <div style={{ height: "100%" }} />
+    loadingElement: <div style={{ height: `80%` }} />,
+    containerElement: <div style={{ height: "100vh", width: "100%"}} />,
+    mapElement: <div style={{ height: "80%"}} />
   }),
   withStateHandlers(
     props => ({

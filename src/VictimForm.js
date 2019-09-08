@@ -9,20 +9,16 @@ class VictimForm extends Component {
 
     this.state = {
 
-      'items': {
-        'water': false,
-        'food': false,
-        'first-aid': false,
-        'batteries': false,
-      },
-
-      'itemsArr': [],
+      itemsArr: [],
 
       userLocation: { lat: 0, lng: 0 }, 
       loading: true,
       curTime: null,
+      itemVal: '',
 
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.keyPress = this.keyPress.bind(this);
   }
 
   componentDidMount(props) {
@@ -47,40 +43,45 @@ class VictimForm extends Component {
     );
   }
 
-  renderItems() {
-    const items = ['water', 'food', 'first-aid', 'batteries'];
-    return items.map((item, i) => {
+  renderEnteredItems() {
+    const items = this.state.itemsArr;
+    return items.map((item) => {
       return (
-        <label key={i}>
-          {item}
-          <input
-          type="checkbox"
-          name={item}
-          onChange={this.onItemChange.bind(this)}
-          value={this.state.items[item]}
-          />
-        </label>
+          <li>{item}</li>
       )
     })
   }
 
+  keyPress(e){
+    if(e.keyCode === 13){
+       console.log('entered item', this.state.itemVal);
+       const name = this.state.itemVal;
+       var joined = this.state.itemsArr.concat(name);
+       this.setState({ itemsArr: joined });
+    }
+ }
+
+ handleChange(e) {
+  this.setState({ itemVal: e.target.value });
+  console.log(this.state.itemVal);
+}
+
 
   onItemChange(e) {
-    const val = e.target.checked;
     const name = e.target.name;
-    let updatedItems = Object.assign({}, this.state.items, {[name]: val})
     var joined = this.state.itemsArr.concat(name);
     this.setState({
-      'items': updatedItems,
-      'itemsArr': joined
+      itemsArr: joined
     })
   }
   
   
  onFormSubmit = (event) => {
    event.preventDefault();
+   this.setState({
+     itemVal: ''
+  })
    
-   console.log(this.state.items)
    console.log(this.state.itemsArr);
    console.log(this.state.userLocation);
    console.log(this.state.curTime);
@@ -91,10 +92,13 @@ class VictimForm extends Component {
   render() {
     
     return (
-      <div className="App">
+      <div className="App" style={{width:"100%"}}>
 
           <form onSubmit={this.onFormSubmit.bind(this)}>
-            {this.renderItems()}
+            <input type="text" value={this.state.itemVal} onKeyDown={this.keyPress} onChange={this.handleChange}/>
+            <ul>
+            {this.renderEnteredItems()}
+            </ul>
             <input type="submit" value="Submit!"/>
           </form>
       </div>
