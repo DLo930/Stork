@@ -1,7 +1,7 @@
 import React from 'react';
-import MapContainer from './MapContainer.js'
 import './App.css';
 
+import VictimForm from './VictimForm.js'
 import Map from "./Map";
 import places from "./places.json";
 
@@ -15,7 +15,8 @@ function App() {
           center={{ lat: 39.961, lng: -75.176 }}
           zoom={10}
           places={places}
-        />,
+        />
+        <VictimForm/>
       </header>
     </div>
   );
