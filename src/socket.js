@@ -11,4 +11,12 @@ const subscribeToSupplied = (cb) => {
   socket.on('supplied', (json) => cb(null, json));
 };
 
-export { subscribeToPost, subscribeToSupplied };
+const publishPost = (json) => {
+  socket.emit('list post', json);
+}
+
+const publishSupply = (json) => {
+  socket.emit('supply', json);
+}
+
+export { subscribeToPost, subscribeToSupplied, publishPost, publishSupply };
