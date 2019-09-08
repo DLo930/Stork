@@ -97,6 +97,7 @@ class VictimForm extends Component {
 
           <form onSubmit={this.onFormSubmit.bind(this)}>
             <h3 style={{color:"white"}}>What items do you need?</h3>
+
             <input type="text" value={this.state.itemVal} onKeyDown={this.keyPress} onChange={this.handleChange}/>
             <ul>
             {this.renderEnteredItems()}
