@@ -49,7 +49,7 @@ const MapWithPlaces = compose(
             title="Click to zoom"
             onClick={props.onToggleOpen.bind(this, i)}
           >
-            {props.infoWindows[i].isOpen && (
+            {(
               <InfoWindow onCloseClick={props.onToggleOpen.bind(i)}>
                 <div style={{color:"red"}}>{place.name}<br></br>{place.address}<br></br>{place.needs}</div>
               </InfoWindow>

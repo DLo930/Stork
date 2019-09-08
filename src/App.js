@@ -21,12 +21,14 @@ class App extends Component {
 
   componentDidMount = () => {
     subscribeToPost((err, json) => {
+      console.log('Received post');
       var places = this.state.places;
       places.push(json);
       this.setState({ places: places });
     });
 
     subscribeToSupplied((err, json) => {
+      console.log('Received supply');
       var places = this.state.places;
       json.lists.forEach((field) => {
         var tmp = places.find(

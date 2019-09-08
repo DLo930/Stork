@@ -58,23 +58,16 @@ class VictimForm extends Component {
     if(e.keyCode === 13){
       const name = this.state.itemVal;
       var joined = this.state.itemsArr.concat(name);
-      this.setState({ itemsArr: joined });
+      this.setState({
+        itemVal: '',
+        itemsArr: joined
+      });
     }
   }
 
   handleChange(e) {
     this.setState({ itemVal: e.target.value });
   }
-
-
-  onItemChange(e) {
-    const name = e.target.name;
-    var joined = this.state.itemsArr.concat(name);
-    this.setState({
-      itemsArr: joined
-    })
-  }
-
 
   onFormSubmit = (event) => {
     event.preventDefault();
@@ -94,17 +87,14 @@ class VictimForm extends Component {
     return (
       <div className="App" style={{width:"100%"}}>
         <br/>
+          <h3 style={{color:"white"}}>What items do you need?</h3>
 
-          <form onSubmit={this.onFormSubmit.bind(this)}>
-            <h3 style={{color:"white"}}>What items do you need?</h3>
-
-            <input type="text" value={this.state.itemVal} onKeyDown={this.keyPress} onChange={this.handleChange}/>
-            <ul>
-            {this.renderEnteredItems()}
-            </ul>
-            <br/>
-            <input type="submit" value="Request" class="submit-button"/>
-          </form>
+          <input type="text" value={this.state.itemVal} onKeyDown={this.keyPress} onChange={this.handleChange}/>
+          <ul>
+          {this.renderEnteredItems()}
+          </ul>
+          <br/>
+          <input type="submit" value="Request" class="submit-button" onClick={this.onFormSubmit}/>
           <br/>
       </div>
     );
