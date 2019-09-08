@@ -83,36 +83,20 @@ class VictimForm extends Component {
 
 
   render() {
-
     return (
-      <div class="w-container">
-        <div class="div-block-2">
-          <div class="w-form">
+      <div className="w-container">
+        <div className="div-block-2">
+          <div className="w-form">
             <h3 style={{color:"black"}}>What items do you need?</h3>
             <input type="text" value={this.state.itemVal} onKeyDown={this.keyPress} onChange={this.handleChange}/>
             <ul>
             {this.renderEnteredItems()}
             </ul>
             <br/>
-            <input placeholder="Item" type="submit" value="Request" class="submit-button" onClick={this.onFormSubmit}/>
+            <input placeholder="Item" type="submit" value="Request" className="submit-button" onClick={this.onFormSubmit}/>
           </div>
         </div>
       </div>
-      /* <div className="App" style={{width:"100%"}}>
-        <br/>
-        <form>
-          <h3 style={{color:"black"}}>What items do you need?</h3>
-
-          <input type="text" value={this.state.itemVal} onKeyDown={this.keyPress} onChange={this.handleChange}/>
-          <ul>
-          {this.renderEnteredItems()}
-          </ul>
-          <br/>
-          <input placeholder="Item" type="submit" value="Request" class="submit-button" onClick={this.onFormSubmit}/>
-          </form>
-          <br/>
-          <br/>
-      </div> */
     );
 
   }

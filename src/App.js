@@ -4,9 +4,9 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 
-import VictimForm from './VictimForm.js'
+import VictimForm from './VictimForm'
 import Map from "./Map";
-import initial_places from "./places.json";
+import initial_places from "./places";
 import './App.css';
 
 import { getPlaces, subscribeToPlaces, subscribeToPost, subscribeToSupplied } from './socket';
@@ -15,12 +15,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      places: [],
+      places: initial_places,
     };
 
-    subscribeToPlaces((err, json) => {
-      this.setState({ places: json.places });
-    });
+    // subscribeToPlaces((err, json) => {
+    //   this.setState({ places: json });
+    // });
 
     subscribeToPost((err, json) => {
       var places = this.state.places;

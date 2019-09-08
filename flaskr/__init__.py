@@ -22,7 +22,7 @@ def get_places():
     docs = lists.stream()
     places = []
     for doc in docs:
-        places.append(doc)
+        places.append(doc.to_dict())
     emit('places', places)
 
 @socketio.on('connect')
