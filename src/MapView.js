@@ -1,37 +1,38 @@
-import React, { Component } from 'react'
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
-import MapComponent from './MapComponent'
+import React, { Component } from 'react';
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import MapComponent from './MapComponent';
 
 class MapView extends Component {
   constructor(props){
-    super(props)
+    super(props);
     this.state = {
-      currentLatLng: {
+      location: {
         lat: 0,
         lng: 0
       },
+      items: [],
       isMarkerShown: false
-    }
+    };
   }
 
-  componentWillUpdate(){
-    this.getGeoLocation()
+  componentWillUpdate() {
+    this.getGeoLocation();
   }
 
   componentDidMount() {
-    this.delayedShowMarker()
+    this.delayedShowMarker();
   }
 
   delayedShowMarker = () => {
     setTimeout(() => {
-      this.getGeoLocation()
-      this.setState({ isMarkerShown: true })
-    }, 5000)
+      this.getGeoLocation();
+      this.setState({ isMarkerShown: true });
+    }, 5000);
   }
 
   handleMarkerClick = () => {
-    this.setState({ isMarkerShown: false })
-    this.delayedShowMarker()
+    this.setState({ isMarkerShown: false });
+    this.delayedShowMarker();
   }
 
   getGeoLocation = () => {
@@ -41,11 +42,11 @@ class MapView extends Component {
           this.setState({
             lat: position.coords.latitude,
             lng: position.coords.longitude
-          })
+          });
         }
-      )
+      );
     } else {
-      error => console.log(error)
+      error => console.log(error);
     }
   }
 
@@ -54,9 +55,9 @@ class MapView extends Component {
       <MapComponent
         isMarkerShown={this.state.isMarkerShown}
         onMarkerClick={this.handleMarkerClick}
-        currentLocation={this.state.currentLatLng}
+        currentLocation={this.state.location}
       />
-    )
+    );
   }
 }
 
