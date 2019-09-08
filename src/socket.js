@@ -4,11 +4,15 @@ const endpoint = 'http://localhost:5000';
 const socket = io(endpoint);
 
 const subscribeToPost = (cb) => {
-  socket.on('list posted', (json) => cb(null, json));
+  socket.on('list posted', (json) => {
+    cb(null, json);
+  });
 };
 
 const subscribeToSupplied = (cb) => {
-  socket.on('supplied', (json) => cb(null, json));
+  socket.on('supplied', (json) => {
+    cb(null, json);
+  });
 };
 
 const publishPost = (json) => {
