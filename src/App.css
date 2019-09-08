@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  background: violet;
 }
 
 .App-logo {
@@ -8,7 +7,11 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+#id {
+  background-position: 0px 0px;
+  background-size: cover;
+  background-repeat: repeat;
+}
 .App-header {
   background-color: beige;
   min-height: 100vh;
@@ -127,3 +130,6 @@ li a:hover {
   display: inline-block;
 }
 
+span {
+  font-weight: 1000;
+}

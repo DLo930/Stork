@@ -1,3 +1,4 @@
+/*global google*/
 import React from "react";
 import {
   withGoogleMap,
@@ -48,17 +49,11 @@ const MapWithPlaces = compose(
             position={{ lat: lat, lng: lng }}
             title="Click to zoom"
             onClick={props.onToggleOpen.bind(this, i)}
-            onLoad={props.onToggleOpen.bind(this, i)}
+            defaultAnimation={google.maps.Animation.BOUNCE}
           >
             {(
               <InfoWindow onCloseClick={props.onToggleOpen.bind(i)}>
-                <div style={{color:"red"}}>
-                  <ul>
-                    {place.items.forEach((item) => {
-                      return (<li>item</li>)
-                    })}
-                  </ul>
-                </div>
+                <div style={{color:"red"}}>{place.name}<br></br>{place.address}<br></br>{place.needs}</div>
               </InfoWindow>
             )}
           </Marker>
