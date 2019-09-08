@@ -1,3 +1,4 @@
+/*global google*/
 import React from "react";
 import {
   withGoogleMap,
@@ -48,6 +49,7 @@ const MapWithPlaces = compose(
             position={{ lat: lat, lng: lng }}
             title="Click to zoom"
             onClick={props.onToggleOpen.bind(this, i)}
+            defaultAnimation={google.maps.Animation.BOUNCE}
           >
             {(
               <InfoWindow onCloseClick={props.onToggleOpen.bind(i)}>
