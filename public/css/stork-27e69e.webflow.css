@@ -137,7 +137,7 @@
   display: -ms-flexbox;
   display: flex;
   width: 400px;
-  height: 400px;
+  height: 100%;
   margin-top: 10px;
   float: none;
   clear: none;
