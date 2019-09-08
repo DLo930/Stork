@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background: violet;
 }
 
 .App-logo {
@@ -9,7 +10,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: rgb(35, 190, 113);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -30,4 +31,99 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.form-control {
+  width: 50%;
+  border: 1px solid #ccc;
+  padding: 10px; 
+}
+
+.control-error {
+  border: 1px solid red;
+}
+
+
+
+
+h2 {
+  font: 400 40px/1.5 Helvetica, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: black;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  margin-top: 10px;
+  padding: 0;
+}
+
+li {
+  font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+  border-bottom: 1px solid #ccc;
+}
+
+li:last-child {
+  border: none;
+}
+
+li a {
+  text-decoration: none;
+  color: #000;
+
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+  display: block;
+  width: 200px;
+}
+
+li a:hover {
+  font-size: 30px;
+  background: #f6f6f6;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600');
+
+@keyframes short-press {
+  0% {
+    transform: scale(1);
+  }
+  
+  50% {
+    transform: scale(.9);
+  }
+  
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+.hide {
+  display: none;
+}
+
+.submit-button {
+  display: block;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: .75em;
+  letter-spacing: 1px;
+  height: 38px;
+  width: 120px;
+  line-height: 38px;
+  overflow: hidden;
+  background: lightcoral;
+  border-radius: 5px;
+  border: 10px #ccc;
+  box-shadow: 10px 25px 40px rgb(199, 176, 176);
+  cursor: pointer;
+  transition: all .3s ease;
+  display: inline-block;
 }
