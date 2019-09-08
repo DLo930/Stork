@@ -15,7 +15,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      places: initial_places,
+      places: [],
     };
 
     subscribeToPlaces((err, json) => {

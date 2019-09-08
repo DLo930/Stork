@@ -22,7 +22,7 @@ def get_places():
     docs = lists.stream()
     places = []
     for doc in docs:
-        places.push(doc)
+        places.append(doc)
     emit('places', places)
 
 @socketio.on('connect')
@@ -34,7 +34,7 @@ def test_connect():
 def test_disconnect():
     if DEV: # Delete all but the first document
         i = 0
-        iter = lists.stream()
+        iter = lists.list_documents()
         for it in iter:
             if i > 0:
                 it.delete()

@@ -8,6 +8,31 @@ import {
   InfoWindow
 } from "react-google-maps";
 import { compose, withProps, withStateHandlers } from "recompose";
+import Geocode from 'react-geocode';
+
+Geocode.setApiKey('AIzaSyA1QldVMg5AlqLLo-7_DrOWJ50JgN8p9Cc');
+
+Geocode.enableDebug();
+
+Geocode.fromLatLng("48.8583701", "2.2922926").then(
+  response => {
+    const address = response.results[0].formatted_address;
+    console.log(address);
+  },
+  error => {
+    console.log(error);
+  }
+);
+
+Geocode.fromAddress("Eiffel Tower").then(
+  response => {
+    const { lat, lng } = response.results[0].geometry.location;
+    console.log(lat, lng);
+  },
+  error => {
+    console.error(error);
+  }
+);
 
 
 const MapWithPlaces = compose(
@@ -39,8 +64,9 @@ const MapWithPlaces = compose(
   <GoogleMap defaultZoom={props.zoom} defaultCenter={props.center}>
     {props.places &&
       props.places.map((place, i) => {
-        let lat = parseFloat(place.latitude, 10);
-        let lng = parseFloat(place.longitude, 10);
+        let lat = parseFloat(place.location[0], 10);
+        let lng = parseFloat(place.location[1], 10);
+        console.log(place.items);
 
         return (
           <Marker
@@ -49,16 +75,20 @@ const MapWithPlaces = compose(
             position={{ lat: lat, lng: lng }}
             title="Click to zoom"
             onClick={props.onToggleOpen.bind(this, i)}
-            defaultAnimation={google.maps.Animation.BOUNCE}
+            defaultAnimation={google.maps.Animation.DROP}
           >
             {(
               <InfoWindow onCloseClick={props.onToggleOpen.bind(i)}>
                 <div style={{color:"red"}}>
                   <ul>
-                    {place.items.forEach((item) => {
-                      return (<li>{item}</li>);
-                    })}
+                    {place.items.map(
+                      (item) => {
+                        return <li>{item}</li>;
+                      })
+                    }
                   </ul>
+                  {`${place.location[0]} ${place.location[1]}`}
+                  <br />
                   {place.time}
                 </div>
               </InfoWindow>
