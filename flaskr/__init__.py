@@ -4,12 +4,14 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 from flask import Flask
-from flask_socketio import SocketIO
+from flask_socketio import SocketIO, emit
+from flask_cors import CORS
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret!'
-socketio = SocketIO(app)
+CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 cred = credentials.Certificate('stork-20b75-firebase-adminsdk-ml5n9-9eac6fb09d.json')
 firebase_admin.initialize_app(cred)
@@ -18,6 +20,7 @@ lists = firestore.client().collection('lists')
 
 @socketio.on('connect')
 def test_connect():
+    print('Client connected!')
     emit('my response', {'data': 'Connected'})
 
 @socketio.on('disconnect')

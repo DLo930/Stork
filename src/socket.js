@@ -1,7 +1,7 @@
-import openSocket from 'socket.io-client';
+import io from 'socket.io-client';
 
-const endpoint = 'http://localhost:8000';
-const socket = openSocket(endpoint);
+const endpoint = 'http://localhost:5000';
+const socket = io(endpoint);
 
 const subscribeToPost = (cb) => {
   socket.on('list posted', (json) => cb(null, json));
