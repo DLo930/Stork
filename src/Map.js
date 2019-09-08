@@ -48,6 +48,7 @@ const MapWithPlaces = compose(
             position={{ lat: lat, lng: lng }}
             title="Click to zoom"
             onClick={props.onToggleOpen.bind(this, i)}
+            onLoad={props.onToggleOpen.bind(this, i)}
           >
             {(
               <InfoWindow onCloseClick={props.onToggleOpen.bind(i)}>

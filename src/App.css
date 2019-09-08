@@ -122,8 +122,8 @@ li a:hover {
   background: lightcoral;
   border-radius: 5px;
   border: 10px #ccc;
-  box-shadow: 10px 25px 40px rgb(199, 176, 176);
   cursor: pointer;
   transition: all .3s ease;
   display: inline-block;
 }
+
