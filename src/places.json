@@ -1,0 +1,26 @@
+[
+    {
+      "id": 1,
+      "name": "Drexel",
+      "address": "3141 Chestnut St, Philadelphia, PA 19104",
+      "needs": "Toilet paper, Diapers",
+      "latitude": "40",
+      "longitude": "-75"
+    },
+    {
+      "id": 2,
+      "name": "Temple",
+      "address": "1801 N Broad St, Philadelphia, PA 19122",
+      "needs": "Canned food, towels",
+      "latitude": "39.6942861",
+      "longitude": "-74.9389312"
+    },
+    {
+      "id": 3,
+      "name": "UPenn",
+      "address": "107 Towne Bldg, Philadelphia, PA 19104",
+      "needs": "Water",
+      "latitude": "39.8",
+      "longitude": "-75.2"
+    }
+  ]
