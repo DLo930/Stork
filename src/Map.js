@@ -52,7 +52,13 @@ const MapWithPlaces = compose(
           >
             {(
               <InfoWindow onCloseClick={props.onToggleOpen.bind(i)}>
-                <div style={{color:"red"}}>{place.name}<br></br>{place.address}<br></br>{place.needs}</div>
+                <div style={{color:"red"}}>
+                  <ul>
+                    {place.items.forEach((item) => {
+                      return (<li>item</li>)
+                    })}
+                  </ul>
+                </div>
               </InfoWindow>
             )}
           </Marker>
