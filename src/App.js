@@ -9,7 +9,7 @@ import Map from "./Map";
 import initial_places from "./places.json";
 import './App.css';
 
-import { subscribeToPost, subscribeToSupplied } from './socket';
+import { getPlaces, subscribeToPlaces, subscribeToPost, subscribeToSupplied } from './socket';
 
 class App extends Component {
   constructor(props) {
@@ -17,6 +17,10 @@ class App extends Component {
     this.state = {
       places: []
     };
+
+    subscribeToPlaces((err, json) => {
+      this.setState({ places: json.places });
+    });
 
     subscribeToPost((err, json) => {
       var places = this.state.places;
@@ -33,6 +37,10 @@ class App extends Component {
         // field =
       });
     });
+  }
+
+  componentDidMount = () => {
+    getPlaces();
   }
 
   render() {

@@ -54,9 +54,10 @@ const MapWithPlaces = compose(
                 <div style={{color:"red"}}>
                   <ul>
                     {place.items.forEach((item) => {
-                      return (<li>item</li>)
+                      return (<li>{item}</li>);
                     })}
                   </ul>
+                  {place.time}
                 </div>
               </InfoWindow>
             )}

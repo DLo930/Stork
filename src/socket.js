@@ -15,6 +15,16 @@ const subscribeToSupplied = (cb) => {
   });
 };
 
+const getPlaces = () => {
+  socket.emit('get places');
+};
+
+const subscribeToPlaces = (cb) => {
+  socket.on('places', (json) => {
+    cb(null, json);
+  });
+}
+
 const publishPost = (json) => {
   socket.emit('list post', json);
 }
@@ -23,4 +33,6 @@ const publishSupply = (json) => {
   socket.emit('supply', json);
 }
 
-export { subscribeToPost, subscribeToSupplied, publishPost, publishSupply };
+export {
+  subscribeToPost, subscribeToSupplied, getPlaces, subscribeToPlaces, publishPost, publishSupply
+};

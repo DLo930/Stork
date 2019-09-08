@@ -6,6 +6,8 @@ from firebase_admin import firestore
 from flask import Flask
 from flask_socketio import SocketIO, emit
 
+DEV = True
+
 app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
 socketio = SocketIO(app, cors_allowed_origins="*")
@@ -15,6 +17,14 @@ firebase_admin.initialize_app(cred)
 lists = firestore.client().collection('lists')
 
 
+@socketio.on('get places')
+def get_places():
+    docs = lists.stream()
+    places = []
+    for doc in docs:
+        places.push(doc)
+    emit('places', places)
+
 @socketio.on('connect')
 def test_connect():
     print('Client connected!')
@@ -22,7 +32,15 @@ def test_connect():
 
 @socketio.on('disconnect')
 def test_disconnect():
+    if DEV: # Delete all but the first document
+        i = 0
+        iter = lists.stream()
+        for it in iter:
+            if i > 0:
+                it.delete()
+            i += 1
     print('Client disconnected')
+
 
 @socketio.on('list post')
 def handle_list_post(json):
