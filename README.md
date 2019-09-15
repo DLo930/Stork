@@ -2,16 +2,6 @@
 
 A web app to connect people in need with supplies during disasters.
 
-http://stork-20b75.appspot.com/
-
-To try it out with npm:
-
-```
-npm install
-cd flaskr
-flask run
-```
-
 ---
 
 _PennApps XX_
